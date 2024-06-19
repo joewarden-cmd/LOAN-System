@@ -1,0 +1,68 @@
+@model IEnumerable<DinoLoan.ViewModels.ClientInfoViewModel>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Client Information</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="usertype">User type</a>
+</ul>
+
+<a class="btn btn-success mt-4" href="client/create">Add NEW client</a>
+
+<div class="container table-responsive">
+  <table class="table table-striped table-dark">
+        <thead>
+            <tr class="text-center">
+                <th class="col">#</th>
+                <th class="col">UserType</th>
+                <th class="col">FirstName</th>
+                <th class="col">MiddleName</th>
+                <th class="col">LastName</th>
+@*                 <th class="col">Address</th>
+                <th class="col">ZipCode</th>
+                <th class="col">Birthday</th>
+                <th class="col">Age</th>
+                <th class="col">NameOfFather</th>
+                <th class="col">NameOfMother</th>
+                <th class="col">CivilStatus</th>
+                <th class="col">Religion</th>
+                <th class="col">Occupation</th> *@
+                <th class="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var clientInfo in Model)
+            {
+                <tr>
+                    <th>@clientInfo.Id</th>
+                    @* <td>@foreach (var userType in ViewData["UserTypes"] as List<Usertype>)
+                        {
+                            @if (userType.Id == clientInfo.UserType)
+                            {
+                                @userType.Name
+                            }
+                        }</td> *@
+                    <td>@clientInfo.UserTypeName</td>
+                    <td>@clientInfo.FirstName</td>
+                    <td>@clientInfo.MiddleName</td>
+                    <td>@clientInfo.LastName</td>
+                    @* <td>@clientInfo.Address</td>
+                    <td>@clientInfo.ZipCode</td>
+                    <td>@clientInfo.Birthday.ToString("MMM dd yyyy")</td>
+                    <td>@clientInfo.Age</td>
+                    <td>@clientInfo.NameOfFather</td>
+                    <td>@clientInfo.NameOfMother</td>
+                    <td>@clientInfo.CivilStatus</td>
+                    <td>@clientInfo.Religion</td>
+                    <td>@clientInfo.Occupation</td> *@
+                    <td>
+                        <a class="bi bi-file-earmark-person fs-2 " asp-action="Details" asp-route-id="@clientInfo.Id"></a>
+                        <a class="bi bi-arrow-90deg-up fs-2 text-success " asp-action="Update" asp-route-id="@clientInfo.Id"></a>
+                        <a class="bi bi-trash fs-2 text-danger" asp-action="Delete" asp-route-id="@clientInfo.Id"></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
